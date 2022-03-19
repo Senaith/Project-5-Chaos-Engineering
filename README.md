@@ -1,7 +1,7 @@
 # Project-5-Chaos-Engineering
 ## Chaos Engineering with LitmusChaos on Amazon EKS
 
-What is Chaos Engineering?
+## What is Chaos Engineering?
 
 ![1_yoBx98rGeUy9UuDnFO4vfw](https://user-images.githubusercontent.com/91766546/158917498-3e1939be-e287-4c9d-8c75-1971e367d0f0.png)
 
@@ -79,5 +79,3 @@ Let's open our terminal and run these commands on it.
 ![Screenshot from 2022-03-14 22-32-34](https://user-images.githubusercontent.com/91766546/158957772-b7135006-ad3d-45a5-95b7-25235aae69e9.png)
 
 After running these commands on the terminal, navigate to AWS console and search for Amazon Elastic Kubernetes Service (EKS). The cluster created on the terminal should appear as such:
-
-![Screenshot from 2022-03-15 01-45-05](https://user-images.githubusercontent.com/91766546/158957914-5f4fad3a-8dfc-4973-8dd2-4d5ba70eb029.png)
