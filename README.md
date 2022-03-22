@@ -79,6 +79,24 @@ Let's open our terminal and run these commands on it.
 
 ![Screenshot from 2022-03-14 22-32-34](https://user-images.githubusercontent.com/91766546/158957772-b7135006-ad3d-45a5-95b7-25235aae69e9.png)
 
+After running these commands on the terminal, navigate to AWS console and search for Amazon Elastic Kubernetes Service (EKS)
+
+![2022-03-18_17-37](https://user-images.githubusercontent.com/91766546/159435323-4b5cd162-814b-4854-a931-883fa1149a9c.png)
+
+The cluster created on the terminal should appear as such:
+
+![Screenshot from 2022-03-15 01-45-05](https://user-images.githubusercontent.com/91766546/159435662-a24c0b10-39ce-479d-9665-50dbe75a1f96.png)
+
+When click on the cluster eks-litmus-demo, 2 nodes must show. If for any reason, there is no Node in there, need to add Nodes manually.
+
+![2022-03-18_17-43](https://user-images.githubusercontent.com/91766546/159435948-c5b69da4-e743-458f-b387-821f73c6a39b.png)
+
+
+![2022-03-18_17-46](https://user-images.githubusercontent.com/91766546/159436002-0d0732cc-9d30-4f5d-90e2-01b47a70fdc3.png)
+
+![Screenshot from 2022-03-15 01-48-30](https://user-images.githubusercontent.com/91766546/159436125-aa6f0f62-310e-45a3-9eee-39b63d2dd42c.png)
+
+
 ### Install LitmusChaos
 
 Let’s install LitmusChaos on an Amazon EKS cluster using a Helm chart. The Helm chart will install the needed CRDs, service account configuration, and ChaosCenter.
