@@ -91,10 +91,33 @@ When click on the cluster eks-litmus-demo, 2 nodes must show. If for any reason,
 
 ![2022-03-18_17-43](https://user-images.githubusercontent.com/91766546/159435948-c5b69da4-e743-458f-b387-821f73c6a39b.png)
 
-
 ![2022-03-18_17-46](https://user-images.githubusercontent.com/91766546/159436002-0d0732cc-9d30-4f5d-90e2-01b47a70fdc3.png)
 
-![Screenshot from 2022-03-15 01-48-30](https://user-images.githubusercontent.com/91766546/159436125-aa6f0f62-310e-45a3-9eee-39b63d2dd42c.png)
+![g1](https://user-images.githubusercontent.com/91766546/160276563-7a5e076e-b413-49ca-957b-08d0b900b2ec.png)
+
+![Screenshot from 2022-03-15 01-56-17](https://user-images.githubusercontent.com/91766546/160276592-5a2297ae-6c12-4a82-ba92-7d658ba27358.png)
+
+![f](https://user-images.githubusercontent.com/91766546/160276115-772deca8-1035-4546-9745-88ab96e4f32b.png)
+
+![ff](https://user-images.githubusercontent.com/91766546/160276132-96855c1e-411d-482d-b127-45b3bd8df671.png)
+
+![fff](https://user-images.githubusercontent.com/91766546/160276135-3e06c459-6c55-4b97-9d55-657103512ee0.png)
+
+![ffff](https://user-images.githubusercontent.com/91766546/160276142-718c1266-a864-4cfa-9b69-4d81390a604f.png)
+
+![fffff](https://user-images.githubusercontent.com/91766546/160276154-aab5a1c6-5980-4741-aa16-8095f668c42f.png)
+
+![ffffff](https://user-images.githubusercontent.com/91766546/160276170-d07a8dca-eb64-4aba-b276-b8744b1ce530.png)
+
+![g](https://user-images.githubusercontent.com/91766546/160276181-c21f38d8-d92b-45f9-beb7-502a12dab1cb.png)
+
+![gg](https://user-images.githubusercontent.com/91766546/160276187-7ec91d5d-0d12-45a5-9eac-ab2de05d9c7a.png)
+
+![ggg](https://user-images.githubusercontent.com/91766546/160276197-eb45c10a-1c0b-472a-b0c2-318a8acb1825.png)
+
+![gggg](https://user-images.githubusercontent.com/91766546/160276205-85239f0b-4334-438d-8444-760cf01e5d21.png)
+
+![ggggg](https://user-images.githubusercontent.com/91766546/160276208-c6709cdc-db81-417d-bfdb-1e7123b4a4d5.png)
 
 
 ### Install LitmusChaos
@@ -254,13 +277,121 @@ Make sure your service account with the ARN of the IAM role is annotated.
 
 ![Screenshot from 2022-03-15 02-13-19](https://user-images.githubusercontent.com/91766546/159208251-a46c7c7e-9e9c-49d7-8533-3f18694eac4c.png)
 
+### Deploy the Cluster Autoscaler
 
+Download the Cluster Autoscaler manifest.
 
+![Screenshot from 2022-03-15 02-14-17](https://user-images.githubusercontent.com/91766546/160276727-4c23c573-e9ed-475d-95d4-5030943131d1.png)
 
-After successful sign-in, you should see the welcome dashboard. Click on the ChaosAgents link from the left-hand navigation.
+![Screenshot from 2022-03-15 02-20-05](https://user-images.githubusercontent.com/91766546/160276884-eb917609-6614-4245-8ff2-670a1c5699f9.png)
 
+ Edit the downloaded file to replace <YOUR CLUSTER NAME> with the cluster name (eks-litmus-demo). The edited section should look like the following:
+  
+![Screenshot from 2022-03-15 02-19-37](https://user-images.githubusercontent.com/91766546/160276740-c9b995e3-6180-4621-a622-944d564e2f66.png)
 
-After running these commands on the terminal, navigate to AWS console and search for Amazon Elastic Kubernetes Service (EKS). The cluster created on the terminal should appear as such:
+ Apply the manifest file to the cluster.
+  
+ ![Screenshot from 2022-03-15 02-21-08](https://user-images.githubusercontent.com/91766546/160276904-e738c3b3-65f3-43f6-aac4-6c60bf0aab66.png)
 
-![aws-eks-search](https://user-images.githubusercontent.com/91766546/159183756-3f8ccb6f-f429-416d-9bce-081020bc9323.png)
+ Patch the deployment to add the cluster-autoscaler.kubernetes.io/safe-to-evict annotation to the Cluster Autoscaler pods with the following command.
+  
+ ![Screenshot from 2022-03-15 02-22-48](https://user-images.githubusercontent.com/91766546/160276914-50acb37d-19c8-4339-a299-9d11a4593f62.png)
 
+Find the latest Cluster Autoscaler version that matches the Kubernetes major and minor versions of your cluster. For example, if the Kubernetes version of your cluster is 1.21, find the latest Cluster Autoscaler release that begins with 1.21. Record the semantic version number (1.21.n) for that release to use in the next step.
+  
+![Screenshot from 2022-03-15 02-24-39](https://user-images.githubusercontent.com/91766546/160276998-a47e87e2-784b-436e-a015-63f19d42b681.png)
+
+Set the Cluster Autoscaler image tag to the version that was exported in the previous step with the following command.
+  
+![Screenshot from 2022-03-15 02-25-09](https://user-images.githubusercontent.com/91766546/160277050-f6f0f8b5-9992-4fae-9027-1bd3c7b33e82.png)
+
+After you have deployed the Cluster Autoscaler, you can view the logs and verify that it’s monitoring your cluster load. View your Cluster Autoscaler logs with the following command.
+  
+![Screenshot from 2022-03-15 02-27-23](https://user-images.githubusercontent.com/91766546/160277106-f2e14106-31b5-431e-8b87-71c81dd1bbae.png)
+
+Now that we have deployed the Cluster Autoscaler, let’s rerun the same experiment by navigating to Litmus Workflows, then the Schedules tab. 
+Select the three dots menu icon for the workflow and select Rerun Schedule.
+  
+![b](https://user-images.githubusercontent.com/91766546/160277263-c682a9e3-cbbb-43da-a16b-677a8c364791.png)
+
+![bb](https://user-images.githubusercontent.com/91766546/160277268-61f637a5-44d3-4f0c-89a4-7c6f5bfb4170.png)
+
+![bbb](https://user-images.githubusercontent.com/91766546/160277273-23c92133-e598-4a95-868c-137e17c3a0d8.png)
+
+![bbbb](https://user-images.githubusercontent.com/91766546/160277280-7103785f-d492-4683-a878-3023c17c47e2.png)
+
+![bbbbb](https://user-images.githubusercontent.com/91766546/160277289-c1da9291-4cbb-4d39-9641-b653a9689b20.png)
+
+### Experiment Conclusion
+
+Autoscaling the pod triggered the ClusterAautoscaler as a result of insufficient capacity, and a new node was added to the cluster, and the pods were successfully provisioned.
+
+### Next steps
+
+From the above walkthrough, we saw how to get started with Chaos Engineering using LitmusChaos on Amazon EKS cluster. There are additional experiments such as **pod-delete**, **node-drain**, **node-cpu-hog**, and so on that you can integrate with a CI/CD pipeline to perform Chaos Engineering. LitmusChaos also supports **gitops** and advanced chaos workflows using **Chaos Workflows**.
+
+## pod-delete
+
+Pod delete contains chaos to disrupt state of kubernetes resources. Experiments can inject random pod delete failures against specified application.
+
+- Causes (forced/graceful) pod failure of random replicas of an application deployment.
+- Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
+  
+![1_yoBx98rGeUy9UuDnFO4vfw](https://user-images.githubusercontent.com/91766546/160277413-d44a2a92-ed6c-4cfa-bfcc-19d92cb7d0e6.png)
+
+**PRE-REQUISITE:**
+
+**Install Litmus Operator**: a tool for injecting Chaos Experiments
+
+## Installation[](https://docs.litmuschaos.io/docs/getting-started/installation/#installation)
+
+Users looking to use Litmus for the first time have two options available to them today. One way is to use a hosted Litmus service like [ChaosNative Litmus Cloud](https://cloud.chaosnative.com/). Alternatively, users looking for some more flexibility can install Litmus into their own Kubernetes cluster.
+
+Users choosing the self-hosted option can refer to our Install and Configure docs for installing alternate versions and more detailed instructions.
+
+- Self-Hosted
+- Hosted (Beta)
+
+Installation of Self-Hosted Litmus can be done using either of the below 
+
+**methods** :
+
+[Helm3](https://docs.litmuschaos.io/docs/getting-started/installation/#install-litmus-using-helm) chart 
+
+[Kubectl](https://docs.litmuschaos.io/docs/getting-started/installation/#install-litmus-using-kubectl) yaml spec file. 
+
+Refer to the below details for Self-Hosted Litmus installation.
+  
+### Install Litmus using Helm
+
+The helm chart will install all the required service account configuration and ChaosCenter.
+
+Since we already installed Helm at the beginning of this project, there is no need to do it again.
+
+Note: This is the command I would use in case it wasn't install prior:
+
+![bbbbbb](https://user-images.githubusercontent.com/91766546/160277648-8c235791-3ab0-4962-adfd-a8b15beda83e.png)Add the litmus helm repository
+
+![Screenshot from 2022-03-15 02-41-22](https://user-images.githubusercontent.com/91766546/160277595-9900496d-5314-410f-b266-e6407d5e748f.png)
+
+Then
+
+### Install this Chaos Experiment
+  
+You can install the Chaos Experiment using the following command:
+  
+![Screenshot from 2022-03-15 07-52-51](https://user-images.githubusercontent.com/91766546/160278011-ea5a6ae0-4cb2-4ef5-a2bb-cfdaeee71821.png)
+
+### Setup Service Account (RBAC)
+
+Create a service account using the following command:
+
+![Screenshot from 2022-03-15 02-42-22](https://user-images.githubusercontent.com/91766546/160278070-92832383-af62-4334-99b9-abb0200a3489.png)
+
+Sample Chaos Engine
+
+  Create an engine.yaml file using nano
+
+![Screenshot from 2022-03-15 07-53-25](https://user-images.githubusercontent.com/91766546/160278122-bdc75b42-ef09-4500-ba97-dd73920af83d.png)
+
+![Screenshot from 2022-03-15 07-54-00](https://user-images.githubusercontent.com/91766546/160278154-7212928d-f800-4991-b9f5-0189a5699e37.png)
