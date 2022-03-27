@@ -441,7 +441,24 @@ Create a node-cpu.yaml using nano:
 
 ![Screenshot from 2022-03-15 08-00-42](https://user-images.githubusercontent.com/91766546/160278770-b63367ee-fdbe-4a03-a20e-ac701d52b5d6.png)
  
+ Now apply the yaml using:
 
+![Screenshot from 2022-03-15 08-01-38](https://user-images.githubusercontent.com/91766546/160279086-5a04d1c3-9e84-4fa2-8b1f-3b240412af03.png)
 
+## Clean up
+
+ To avoid charges on your AWS account for resources no longer in use, you need to delete them.
+
+Delete Clusters and Node Group
+
+Navigate to the Amazon EKS console. Under clusters, click on eks-litmus-demo .
+
+![1](https://user-images.githubusercontent.com/91766546/160279166-44f8ae8e-8ee0-475d-8c89-ce4d59c37e5e.png)
+
+To complete the deletion process, you will be asked to type the node group name. Type it and click Delete.
+
+![2](https://user-images.githubusercontent.com/91766546/160279203-34e5fcf1-3856-4335-b002-18c632ae3a47.png)
+
+### Congratulations!!! You have successfully completed this project.
  
  
