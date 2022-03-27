@@ -395,3 +395,53 @@ Sample Chaos Engine
 ![Screenshot from 2022-03-15 07-53-25](https://user-images.githubusercontent.com/91766546/160278122-bdc75b42-ef09-4500-ba97-dd73920af83d.png)
 
 ![Screenshot from 2022-03-15 07-54-00](https://user-images.githubusercontent.com/91766546/160278154-7212928d-f800-4991-b9f5-0189a5699e37.png)
+
+### Node-drain
+Prerequisite
+Install Litmus Operator - a tool for injecting Chaos Experiments
+
+Install this Chaos Experiment
+Install the Chaos experiment by running this command:
+ 
+![Screenshot from 2022-03-15 07-54-40](https://user-images.githubusercontent.com/91766546/160278577-4864af57-ce2f-4eee-988d-92863eeade41.png)
+
+ Setup Service Account (RBAC)
+
+![Screenshot from 2022-03-15 07-55-33](https://user-images.githubusercontent.com/91766546/160278595-30bbd609-06d3-4307-9c6c-c34ab9627efc.png)
+
+ Using nano create a file called generic.yaml
+
+![Screenshot from 2022-03-15 07-56-46](https://user-images.githubusercontent.com/91766546/160278631-46a34e31-d83a-46b1-b5db-c6c5a73bdac2.png)
+
+![Screenshot from 2022-03-15 07-57-17](https://user-images.githubusercontent.com/91766546/160278645-c45702bf-69e7-4792-ac2c-7be347b99720.png)
+
+![Screenshot from 2022-03-15 07-57-56](https://user-images.githubusercontent.com/91766546/160278660-f892e511-cc44-443c-81cd-b7cdc563b8a3.png)
+
+### Node-cpu-hog
+ 
+The Node-cpu-hog experiment causes CPU resource exhaustion on the Kubernetes node. It aims to verify resilience of applications whose replicas may be evicted on account of nodes turning unschedulable due to lack of CPU resources.
+
+Experiments can inject a CPU spike on a node where the application pod is scheduled. CPU hog on a particular node where the application deployment is available. After the test, the recovery should be manual for the application pod and node in case they are not in an appropriate state.
+
+Prerequisite:
+ 
+Install Litmus Operator - a tool for injecting Chaos Experiments
+
+Install this chaos experiment using:
+ 
+![Screenshot from 2022-03-15 07-59-16](https://user-images.githubusercontent.com/91766546/160278716-cfdf32fb-4fef-4426-8cc0-21fe89e73258.png)
+
+Setup Service Account (RBAC)
+
+![Screenshot from 2022-03-15 07-59-49](https://user-images.githubusercontent.com/91766546/160278757-8214c27c-0b23-444a-b258-030e7842bd6f.png)
+
+Create a node-cpu.yaml using nano:
+
+![Screenshot from 2022-03-15 08-00-58](https://user-images.githubusercontent.com/91766546/160278778-644e43d2-9eae-4605-ab9b-4de833b4500d.png)
+
+![Screenshot from 2022-03-15 08-00-42](https://user-images.githubusercontent.com/91766546/160278770-b63367ee-fdbe-4a03-a20e-ac701d52b5d6.png)
+ 
+
+
+ 
+ 
